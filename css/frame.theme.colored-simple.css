@@ -1,0 +1,265 @@
+﻿/* Colored Simple Theme */
+[data-qu-frame-theme="colored-simple"] {
+  --frame-primary: #7c3aed;
+  --frame-success: #10b981;
+  --frame-error: #ef4444;
+  --frame-warning: #f59e0b;
+  --frame-info: #06b6d4;
+  
+  --frame-text: #1f2937;
+  --frame-bg: #ffffff;
+  --frame-border: #f1f5f9;
+  --frame-backdrop: rgba(107, 114, 128, 0.1);
+  --frame-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --frame-border-radius: 16px;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-modal {
+  background: var(--frame-bg);
+  border: 1px solid var(--frame-border);
+  box-shadow: var(--frame-shadow);
+  position: relative;
+/*   overflow: hidden; */
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(124, 58, 237, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(124, 58, 237, 0.03) 0%, transparent 50%);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-header {
+  background: rgba(124, 58, 237, 0.95);
+  border-bottom: none;
+  padding: 2rem 2rem 1.5rem;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.1) 50%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.1) 50%, transparent 52%);
+  background-size: 20px 20px;
+  opacity: 0.3;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-title {
+  color: white;
+  font-weight: 700;
+  font-size: 1.375rem;
+  margin: 0;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-close {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  min-width: 44px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.375rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-close:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-content {
+  color: var(--frame-text);
+  line-height: 1.7;
+  padding: 2.5rem 2rem;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: var(--frame-border-radius);
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-footer {
+  background: rgba(248, 250, 252, 0.9);
+  border-top: 1px solid rgba(241, 245, 249, 0.8);
+  padding: 1.5rem 2rem 2rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(226, 232, 240, 0.8);
+  color: #475569;
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.6), 
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-btn:hover {
+  background: white;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-btn:hover::before {
+  left: 100%;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-confirm {
+  background: var(--frame-primary);
+  border-color: var(--frame-primary);
+  color: white;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-confirm:hover {
+  background: #6d28d9;
+  border-color: #6d28d9;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-cancel {
+  background: transparent;
+  border-color: rgba(226, 232, 240, 0.8);
+  color: #64748b;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-cancel:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #475569;
+}
+
+/* Colored Simple Types */
+[data-qu-frame-theme="colored-simple"].frame-success .frame-header {
+  background: rgba(16, 185, 129, 0.95);
+}
+
+[data-qu-frame-theme="colored-simple"].frame-success .frame-modal::before {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+}
+
+[data-qu-frame-theme="colored-simple"].frame-error .frame-header {
+  background: rgba(239, 68, 68, 0.95);
+}
+
+[data-qu-frame-theme="colored-simple"].frame-error .frame-modal::before {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(239, 68, 68, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(239, 68, 68, 0.03) 0%, transparent 50%);
+}
+
+[data-qu-frame-theme="colored-simple"].frame-warning .frame-header {
+  background: rgba(245, 158, 11, 0.95);
+}
+
+[data-qu-frame-theme="colored-simple"].frame-warning .frame-modal::before {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(245, 158, 11, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+}
+
+[data-qu-frame-theme="colored-simple"].frame-info .frame-header {
+  background: rgba(6, 182, 212, 0.95);
+}
+
+[data-qu-frame-theme="colored-simple"].frame-info .frame-modal::before {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(6, 182, 212, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
+}
+
+/* Colored Simple - Кнопка закрытия без header */
+[data-qu-frame-theme="colored-simple"] .frame-close-minimal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(226, 232, 240, 0.8);
+  color: #64748b;
+  border-radius: 12px;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+[data-qu-frame-theme="colored-simple"] .frame-close-minimal:hover {
+  background: white;
+  border-color: rgba(124, 58, 237, 0.3);
+  color: #7c3aed;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Диалог без header */
+[data-qu-frame-theme="colored-simple"].frame-dialog.frame-no-header .frame-content {
+  padding-top: calc(40px + 1rem);
+}
+
+/* Responsive для мобильных */
+@media (max-width: 576px) {
+  [data-qu-frame-theme="colored-simple"] .frame-close-minimal {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 1.125rem;
+  }
+  
+  [data-qu-frame-theme="colored-simple"].frame-dialog.frame-no-header .frame-content {
+    padding-top: calc(1rem + 36px + 0.75rem);
+  }
+}

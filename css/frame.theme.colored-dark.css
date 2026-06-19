@@ -1,0 +1,186 @@
+﻿/* Colored Dark Theme */
+[data-qu-frame-theme="colored-dark"] {
+  --frame-primary: #2563eb;
+  --frame-success: #059669;
+  --frame-error: #dc2626;
+  --frame-warning: #d97706;
+  --frame-info: #0891b2;
+  
+  --frame-text: #374151;
+  --frame-bg: #ffffff;
+  --frame-border: #e0f2fe;
+  --frame-header-bg: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+  --frame-backdrop: rgba(30, 64, 175, 0.05);
+  --frame-shadow: 0 4px 20px rgba(30, 64, 175, 0.08);
+  --frame-border-radius: 12px;
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-modal {
+  background: var(--frame-bg);
+  border: 1px solid var(--frame-border);
+  box-shadow: var(--frame-shadow);
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-header {
+  background: var(--frame-header-bg);
+  border: none;
+  padding: 1.75rem 2rem;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-title {
+  color: white;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-close {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  min-width: 36px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-close:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-content {
+  color: var(--frame-text);
+  line-height: 1.6;
+  padding: 2rem;
+  background: #ffffff;
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-footer {
+  background: #f0f9ff;
+  border-top: 1px solid #e0f2fe;
+  padding: 1.5rem 2rem;
+  border-radius: 0 0 12px 12px;
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-btn {
+  background: #ffffff;
+  border: 1px solid #bae6fd;
+  color: #0369a1;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-btn:hover {
+  background: #f0f9ff;
+  border-color: #7dd3fc;
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-confirm {
+  background: var(--frame-primary);
+  border-color: var(--frame-primary);
+  color: white;
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-confirm:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-cancel {
+  background: transparent;
+  border-color: #bae6fd;
+  color: #0284c7;
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-cancel:hover {
+  background: #f0f9ff;
+  color: #0369a1;
+  border-color: #7dd3fc;
+}
+
+/* Colored Dark Types */
+[data-qu-frame-theme="colored-dark"].frame-success .frame-header {
+  background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+}
+
+[data-qu-frame-theme="colored-dark"].frame-error .frame-header {
+  background: linear-gradient(135deg, #991b1b 0%, #dc2626 100%);
+}
+
+[data-qu-frame-theme="colored-dark"].frame-warning .frame-header {
+  background: linear-gradient(135deg, #92400e 0%, #b45309 100%);
+}
+
+[data-qu-frame-theme="colored-dark"].frame-info .frame-header {
+  background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%);
+}
+
+/* Кнопка закрытия без header для Colored Dark */
+[data-qu-frame-theme="colored-dark"] .frame-close-minimal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(30, 64, 175, 0.1);
+  border: 1px solid rgba(30, 64, 175, 0.2);
+  color: #1e40af;
+  border-radius: 8px;
+  min-width: 36px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+[data-qu-frame-theme="colored-dark"] .frame-close-minimal:hover {
+  background: rgba(30, 64, 175, 0.2);
+  border-color: rgba(30, 64, 175, 0.3);
+  color: #1d4ed8;
+}
+
+/* Диалог без header */
+[data-qu-frame-theme="colored-dark"].frame-dialog.frame-no-header .frame-content {
+  padding-top: calc(2rem + 1rem);
+}
+
+/* Responsive для мобильных */
+@media (max-width: 576px) {
+  [data-qu-frame-theme="colored-dark"] .frame-close-minimal {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+  
+  [data-qu-frame-theme="colored-dark"].frame-dialog.frame-no-header .frame-content {
+    padding-top: calc(1.5rem + 0.75rem);
+  }
+}

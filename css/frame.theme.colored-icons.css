@@ -1,0 +1,271 @@
+﻿/* Colored Icons Theme */
+[data-qu-frame-theme="colored-icons"] {
+  --frame-primary: #059669;
+  --frame-success: #059669;
+  --frame-error: #dc2626;
+  --frame-warning: #d97706;
+  --frame-info: #0891b2;
+  
+  --frame-text: #1f2937;
+  --frame-bg: #ffffff;
+  --frame-border: #f0fdf4;
+  --frame-backdrop: rgba(5, 150, 105, 0.05);
+  --frame-shadow: 0 8px 32px rgba(5, 150, 105, 0.1);
+  --frame-border-radius: 20px;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-modal {
+  background: var(--frame-bg);
+  border: 1px solid var(--frame-border);
+  box-shadow: var(--frame-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(5, 150, 105, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(5, 150, 105, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.02) 0%, transparent 30%);
+  background-size: 60px 60px;
+  opacity: 0.6;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-header {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border-bottom: none;
+  padding: 2.5rem 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(30deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%),
+    linear-gradient(-30deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+  background-size: 30px 30px;
+  opacity: 0.4;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-header::after {
+  content: '🌿';
+  position: absolute;
+  top: 1.5rem;
+  right: 5rem;
+  font-size: 4rem;
+  opacity: 0.3;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-title {
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-close {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  min-width: 48px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-close:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1) rotate(90deg);
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-content {
+  color: var(--frame-text);
+  line-height: 1.8;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  position: relative;
+  z-index: 1;
+  font-size: 1.0625rem;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-footer {
+  background: rgba(240, 253, 244, 0.8);
+  border-top: 1px solid rgba(220, 252, 231, 0.6);
+  padding: 2rem 2.5rem 2.5rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(187, 247, 208, 0.8);
+  color: #065f46;
+  border-radius: 16px;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.6), 
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-btn:hover {
+  background: white;
+  border-color: #86efac;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(5, 150, 105, 0.2);
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-btn:hover::before {
+  left: 100%;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-confirm {
+  background: var(--frame-primary);
+  border-color: var(--frame-primary);
+  color: white;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-confirm:hover {
+  background: #047857;
+  border-color: #047857;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-cancel {
+  background: transparent;
+  border-color: rgba(187, 247, 208, 0.8);
+  color: #059669;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-cancel:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #047857;
+}
+
+/* Colored Icons Types */
+[data-qu-frame-theme="colored-icons"].frame-error .frame-header {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+[data-qu-frame-theme="colored-icons"].frame-error .frame-header::after {
+  content: '❌';
+}
+
+[data-qu-frame-theme="colored-icons"].frame-error .frame-modal::before {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(220, 38, 38, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(220, 38, 38, 0.03) 0%, transparent 20%);
+}
+
+[data-qu-frame-theme="colored-icons"].frame-warning .frame-header {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+}
+
+[data-qu-frame-theme="colored-icons"].frame-warning .frame-header::after {
+  content: '⚠️';
+}
+
+[data-qu-frame-theme="colored-icons"].frame-warning .frame-modal::before {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(217, 119, 6, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(217, 119, 6, 0.03) 0%, transparent 20%);
+}
+
+[data-qu-frame-theme="colored-icons"].frame-info .frame-header {
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+}
+
+[data-qu-frame-theme="colored-icons"].frame-info .frame-header::after {
+  content: '🗨️';
+}
+
+[data-qu-frame-theme="colored-icons"].frame-info .frame-modal::before {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(8, 145, 178, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(8, 145, 178, 0.03) 0%, transparent 20%);
+}
+
+/* Кнопка закрытия без header для Colored Icons */
+[data-qu-frame-theme="colored-icons"] .frame-close-minimal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(5, 150, 105, 0.15);
+  border: 2px solid rgba(5, 150, 105, 0.25);
+  color: #059669;
+  border-radius: 50%;
+  min-width: 42px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+[data-qu-frame-theme="colored-icons"] .frame-close-minimal:hover {
+  background: rgba(5, 150, 105, 0.25);
+  border-color: rgba(5, 150, 105, 0.4);
+  color: #047857;
+  transform: scale(1.1) rotate(90deg);
+}
+
+/* Диалог без header */
+[data-qu-frame-theme="colored-icons"].frame-dialog.frame-no-header .frame-modal {
+  overflow: unset;
+}
+
+/* Responsive для мобильных */
+@media (max-width: 576px) {
+  [data-qu-frame-theme="colored-icons"] .frame-close-minimal {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 1.15rem;
+  }
+}

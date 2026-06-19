@@ -1,0 +1,487 @@
+﻿/* Frame Core CSS - Minimal Base */
+:root {
+  /* Colors */
+  --frame-primary: #3b82f6;
+  --frame-success: #10b981;
+  --frame-error: #ef4444;
+  --frame-warning: #f59e0b;
+  --frame-info: #06b6d4;
+  
+  --frame-text: #000000;
+  --frame-bg: #ffffff;
+  --frame-border: #e5e5e5;
+  --frame-backdrop: rgba(0, 0, 0, 0.1);
+  --frame-header-bg: #fafafa;
+  
+  /* Spacing */
+  --frame-spacing-xs: 0.5rem;
+  --frame-spacing-sm: 1rem;
+  --frame-spacing-md: 1.5rem;
+  --frame-spacing-lg: 2rem;
+  
+  /* Typography */
+  --frame-font-size-sm: 0.875rem;
+  --frame-font-size-base: 1rem;
+  --frame-font-size-lg: 1.25rem;
+  --frame-font-weight-normal: 400;
+  --frame-font-weight-medium: 500;
+  
+  /* Borders */
+  --frame-border-radius: 8px;
+  --frame-border-radius-sm: 6px;
+  --frame-border-width: 1px;
+  --frame-border-accent: 2px;
+  
+  /* Shadows */
+  --frame-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --frame-transition: all 1.5s ease;
+
+  --frame-padding-inset: 0;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+dialog {
+/*
+  scrollbar-gutter: stable;
+  overflow: auto;
+  */
+}
+
+html:has(dialog[data-qu-frame][open]) {
+  overflow: hidden;
+}
+
+
+/* Core Structure */
+[data-qu-frame] {
+  display: grid;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  border: 0 !important;
+  inset-inline-start: 0px !important;
+  inset-inline-end: 0px !important;
+  box-shadow: none !important;
+  max-height: none !important;
+  max-width: none !important;
+  background: transparent !important;
+  outline: none !important;
+  
+  opacity: 0;
+  
+  padding: var(--frame-padding-inset) !important;
+  transition: opacity var(--qu-transition-duration) var(--qu-transition-func),
+              transform var(--qu-transition-duration) var(--qu-transition-func);
+
+  --qu-transition: var(--frame-transition);
+ /* pointer-events: none;*/
+}
+[data-qu-frame]::backdrop {
+ /* pointer-events: auto;*/
+
+}
+.frame-modal {
+  /*pointer-events: auto;*/
+  position: relative;
+  margin: auto;
+  border: var(--frame-border-width) solid var(--frame-border);
+  border-radius: var(--frame-border-radius);
+  padding: 0;
+  box-shadow: var(--frame-shadow);
+  max-width: 500px;
+  box-sizing: border-box;
+
+  width: 100%;
+  background: var(--frame-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.frame-dialog.frame-no-header .frame-content {
+  max-height: none;
+  flex: 1;
+}
+
+
+/* .frame-dialog.open {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.frame-dialog.closing {
+  opacity: 0;
+  transform: scale(0.8);
+} */
+
+
+
+.frame-dialog:not([open]) {
+  display: none !important;
+}
+
+.frame-dialog::backdrop {
+  background: var(--frame-backdrop);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+/* 
+.frame-dialog.open::backdrop {
+  opacity: 1;
+}
+
+.frame-dialog.closing::backdrop {
+  opacity: 0;
+}
+ */
+
+ /* 
+[data-opening] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-closing] {
+  opacity: 0;
+  transform: scale(0.8);
+} */
+
+[data-qu-opening]::backdrop {
+  opacity: 1;
+}
+
+[data-qu-closing]::backdrop {
+  opacity: 0;
+}
+
+/* Core Layout */
+.frame-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--frame-spacing-sm) var(--frame-spacing-md);
+  border-bottom: var(--frame-border-width) solid var(--frame-border);
+  background: var(--frame-header-bg);
+  border-radius: var(--frame-border-radius) var(--frame-border-radius) 0 0;
+}
+
+.frame-title {
+  margin: 0;
+  font-size: var(--frame-font-size-lg);
+  font-weight: var(--frame-font-weight-medium);
+  color: var(--frame-text);
+}
+
+.frame-close {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: var(--frame-border-radius-sm);
+  transition: var(--frame-transition);
+  width: auto;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+.frame-close:focus {
+  outline: none;
+}
+.frame-close:hover {
+  background: #f3f4f6;
+}
+.frame-close:focus,
+.frame-close:focus-visible {
+    outline: none;
+}
+
+/* Кнопка закрытия без header */
+.frame-close-minimal {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--frame-border-radius-sm);
+  transition: var(--frame-transition);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.frame-close-minimal:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #374151;
+}
+
+.frame-close-minimal:focus,
+.frame-close-minimal:focus-visible {
+  outline: none;
+}
+
+/* Общие стили для фиксированной кнопки */
+.frame-dialog .frame-close-minimal {
+  position: absolute !important;
+  top: -6px !important;
+  right: -6px !important;
+  left: auto !important;
+  z-index: 10;
+  min-width: 32px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+}
+
+.frame-close,
+.frame-close-minimal {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Диалог без header */
+.frame-dialog.frame-no-header .frame-content {
+  padding-top: calc(1.5rem + 0.5rem);
+}
+
+/* Контент с красивым скроллбаром */
+.frame-content {
+  padding: var(--frame-spacing-md);
+  color: var(--frame-text);
+  line-height: 1.5;
+  font-size: var(--frame-font-size-base);
+  overflow: auto;
+  /*max-height: calc(95vh - 200px);*/
+  scroll-behavior: smooth;
+  flex: 1;
+  border-radius: var(--frame-border-radius);
+  /* Для Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+/* Webkit браузеры (Chrome, Safari, Edge) */
+.frame-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.frame-content::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 4px 0;
+}
+
+.frame-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  min-height: 40px;
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.frame-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.frame-content::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.frame-content:hover::-webkit-scrollbar-thumb {
+  opacity: 1;
+}
+
+.frame-footer {
+  padding: var(--frame-spacing-sm) var(--frame-spacing-md);
+  border-top: var(--frame-border-width) solid var(--frame-border);
+  border-radius: 0 0 var(--frame-border-radius) var(--frame-border-radius);
+  display: flex;
+  gap: var(--frame-spacing-xs);
+  justify-content: flex-end;
+  margin-top: auto;
+  flex-shrink: 0;
+  min-height: 60px;
+}
+
+.frame-btn {
+  padding: 0.5rem 1rem;
+  border: var(--frame-border-width) solid #d1d5db;
+  border-radius: var(--frame-border-radius-sm);
+  font-size: var(--frame-font-size-sm);
+  font-weight: var(--frame-font-weight-normal);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: var(--frame-transition);
+  background: white;
+  color: #374151;
+}
+
+.frame-btn:hover {
+  background: #f9fafb;
+}
+
+.frame-btn:focus,
+.frame-btn:focus-visible {
+    outline: none;
+}
+
+.frame-confirm {
+  background: var(--frame-primary);
+  color: white;
+  border-color: var(--frame-primary);
+}
+
+.frame-confirm:hover {
+  background: var(--frame-primary);
+  opacity: 0.9;
+}
+
+.frame-cancel:hover {
+  background: #f9fafb;
+}
+
+/* Minimal Types */
+.frame-success {
+  border-top: var(--frame-border-accent) solid var(--frame-success);
+}
+
+.frame-error {
+  border-top: var(--frame-border-accent) solid var(--frame-error);
+}
+
+.frame-warning {
+  border-top: var(--frame-border-accent) solid var(--frame-warning);
+}
+
+.frame-info {
+  border-top: var(--frame-border-accent) solid var(--frame-info);
+}
+
+/* Для темной темы - адаптируем цвет скроллбара */
+.frame-dialog[class*="dark"] .frame-content::-webkit-scrollbar-thumb,
+.frame-dialog .frame-content.dark-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.frame-dialog[class*="dark"] .frame-content::-webkit-scrollbar-thumb:hover,
+.frame-dialog .frame-content.dark-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.frame-dialog[class*="dark"] .frame-content,
+.frame-dialog .frame-content.dark-scroll {
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .frame-dialog {
+    width: 95vw;
+    margin: auto;
+  }
+  
+  .frame-header,
+  .frame-content,
+  .frame-footer {
+    padding: var(--frame-spacing-sm);
+  }
+  
+  .frame-footer {
+    flex-direction: column;
+  }
+  
+  .frame-btn {
+    width: 100%;
+  }
+  
+  .frame-close-minimal {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  .frame-dialog .frame-close-minimal {
+    top: 0.75rem !important;
+    right: 1rem !important;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 1rem;
+  }
+  
+  .frame-dialog.frame-no-header .frame-content {
+    padding-top: calc(1.5rem + 0.5rem);
+  }
+  
+  /* Всегда показывать скроллбар на мобильных */
+  .frame-content::-webkit-scrollbar-thumb {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  .frame-content {
+    scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
+    max-height: calc(95vh - 150px);
+  }
+  
+  /* Фикс для мобильных confirm */
+  .frame-dialog {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .frame-dialog .frame-content {
+    flex: 1;
+    max-height: none !important;
+    overflow: auto;
+  }
+  
+  .frame-dialog .frame-footer {
+    position: static;
+    border-top: 1px solid var(--frame-border);
+    padding: 1rem;
+    margin-top: auto;
+    flex-shrink: 0;
+  }
+  
+  .frame-dialog .frame-btn {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+  
+  .frame-dialog.frame-no-header {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .frame-dialog.frame-no-header .frame-content {
+    flex: 1;
+    padding-top: calc(1.5rem + 0.5rem);
+  }
+}

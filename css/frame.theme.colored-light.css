@@ -1,0 +1,269 @@
+﻿/* Colored Light Theme */
+[data-qu-frame-theme="colored-light"] {
+  --frame-primary: #8b5cf6;
+  --frame-success: #10b981;
+  --frame-error: #ef4444;
+  --frame-warning: #f59e0b;
+  --frame-info: #06b6d4;
+  
+  --frame-text: #374151;
+  --frame-bg: #ffffff;
+  --frame-border: #f1f5f9;
+  --frame-header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --frame-backdrop: rgba(107, 114, 128, 0.15);
+  --frame-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  --frame-border-radius: 24px;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-modal {
+  background: var(--frame-bg);
+  border: 1px solid var(--frame-border);
+  box-shadow: var(--frame-shadow);
+}
+
+[data-qu-frame-theme="colored-light"] .frame-header {
+  background: var(--frame-header-bg);
+  border: none;
+  padding: 2rem 2rem 1.5rem;
+  border-radius: 24px 24px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent
+  );
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+[data-qu-frame-theme="colored-light"] .frame-title {
+  color: white;
+  font-weight: 600;
+  font-size: 1.375rem;
+  margin: 0;
+  position: relative;
+}
+
+@media (max-width: 576px) {
+  [data-qu-frame-theme="colored-light"] .frame-title {
+    font-size: 1.1rem;
+  }
+}
+
+[data-qu-frame-theme="colored-light"] .frame-close {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.375rem;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-close::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-close:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1) rotate(90deg);
+}
+
+[data-qu-frame-theme="colored-light"] .frame-close:hover::before {
+  left: 100%;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-content {
+  color: var(--frame-text);
+  line-height: 1.7;
+  padding: 2rem;
+  background: #ffffff;
+  position: relative;
+  border-radius: var(--frame-border-radius);
+}
+
+[data-qu-frame-theme="colored-light"] .frame-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    #e2e8f0, 
+    transparent
+  );
+}
+
+[data-qu-frame-theme="colored-light"] .frame-footer {
+  background: #fafbfc;
+  border-top: 1px solid #f1f5f9;
+  padding: 1.5rem 2rem 2rem;
+  border-radius: 0 0 24px 24px;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  border-radius: 16px;
+  font-weight: 500;
+  padding: 0.875rem 2rem;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-qu-frame-theme="colored-light"] .frame-btn:hover::before {
+  left: 100%;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-confirm {
+  background: var(--frame-primary);
+  border-color: var(--frame-primary);
+  color: white;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-confirm:hover {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+}
+
+[data-qu-frame-theme="colored-light"] .frame-cancel {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-cancel:hover {
+  background: #f8fafc;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+/* Colored Light Types */
+[data-qu-frame-theme="colored-light"].frame-success .frame-header {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+[data-qu-frame-theme="colored-light"].frame-error .frame-header {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+[data-qu-frame-theme="colored-light"].frame-warning .frame-header {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+[data-qu-frame-theme="colored-light"].frame-info .frame-header {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+}
+
+/* Colored Light - Адаптация для кнопки закрытия без header */
+[data-qu-frame-theme="colored-light"] .frame-close-minimal {
+  color: rgba(107, 114, 128, 0.8);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 50%;
+  min-width: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+[data-qu-frame-theme="colored-light"] .frame-close-minimal:hover {
+  color: #ef4444;
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(239, 68, 68, 0.3);
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Диалог без header в Colored Light */
+[data-qu-frame-theme="colored-light"].frame-dialog.frame-no-header .frame-content {
+  padding: 2rem;
+}
+
+/* Анимация появления кнопки */
+[data-qu-frame-theme="colored-light"].frame-dialog.frame-no-header .frame-close-minimal {
+ /* animation: buttonSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;*/
+}
+
+@keyframes buttonSlideIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

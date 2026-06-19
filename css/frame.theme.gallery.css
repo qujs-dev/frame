@@ -1,0 +1,457 @@
+﻿/* Gallery Theme - Fullscreen transparent */
+[data-qu-frame-theme="gallery"] {
+    --frame-bg: transparent;
+    --frame-backdrop: rgba(0, 0, 0, 0.9);
+    --frame-border: transparent;
+    --frame-header-bg: transparent;
+    --frame-text: white;
+    --frame-shadow: none;
+    --frame-border-radius: 0;
+  }
+
+  [data-qu-gallery] {
+    cursor: pointer;
+  }
+  
+  [data-qu-frame-theme="gallery"] .frame-dialog {
+    padding: 0 !important;
+    overflow: hidden !important; /* Убираем прокрутку у диалога */
+  }
+  
+  [data-qu-frame-theme="gallery"] .frame-modal {
+    max-width: 100%;
+    width: 100%;
+/*     height: 100vh; */
+    margin: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+/*     overflow: hidden;  */
+  }
+  
+  [data-qu-frame-theme="gallery"] .frame-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    border: none;
+    color: white;
+    padding: 0;
+    height: 0;
+
+  }
+  [data-qu-frame-theme="gallery"] .frame-header > div {
+    padding: 1rem 1.5rem;
+    /*     background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent); */
+
+  }
+  
+  [data-qu-frame-theme="gallery"] .frame-title {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  [data-qu-frame-theme="gallery"] .frame-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    font-size: 2rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  [data-qu-frame-theme="gallery"] .frame-close:hover {
+    opacity: 1;
+    background: transparent;
+  }
+  
+  /* Кнопка закрытия без header */
+  [data-qu-frame-theme="gallery"] .frame-close-minimal {
+    position: fixed !important;
+    top: 1rem !important;
+    right: 1.5rem !important;
+    left: auto !important;
+    color: white !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    font-size: 1.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    backdrop-filter: blur(4px);
+    z-index: 100;
+  }
+  
+  [data-qu-frame-theme="gallery"] .frame-close-minimal:hover {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    transform: scale(1.1) !important;
+  }
+  
+  [data-qu-frame-theme="gallery"] .frame-content {
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* Стили для Swiper в галерее */
+  [data-qu-frame-theme="gallery"] .gallery-swiper {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+  [data-qu-frame-theme="gallery"] .swiper-wrapper {
+    align-items: center;
+  }
+  [data-qu-frame-theme="gallery"] .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+  }
+  
+  [data-qu-frame-theme="gallery"] .swiper-slide img {
+    max-width: 100%;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-select: none;
+    /* cursor: zoom-in; */ /* todo by class  or button */
+  }
+  
+  /* Навигация Swiper */
+  [data-qu-frame-theme="gallery"] .frame-close,
+  [data-qu-frame-theme="gallery"] .swiper-button-prev,
+  [data-qu-frame-theme="gallery"] .swiper-button-next {
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+  }
+  
+  [data-qu-frame-theme="gallery"] .frame-close:hover,
+  [data-qu-frame-theme="gallery"] .swiper-button-prev:hover,
+  [data-qu-frame-theme="gallery"] .swiper-button-next:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+  }
+  
+  [data-qu-frame-theme="gallery"] .swiper-button-prev:after,
+  [data-qu-frame-theme="gallery"] .swiper-button-next:after {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* Пагинация */
+  [data-qu-frame-theme="gallery"] .swiper-pagination {
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1.5rem; bottom: auto;
+    font-size: 0.9rem;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Подпись к слайду */
+  [data-qu-frame-theme="gallery"] .swiper-slide-caption {
+    position: absolute;
+    bottom: 5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+    padding: 2rem 1rem 1rem;
+    font-size: 1rem;
+    pointer-events: none;
+  }
+
+  .swiper-slide-caption-item {
+    position:absolute;
+    bottom:20px;
+    left:auto;
+    right:auto;
+    max-width:100%;
+    backdrop-filter: blur(4px);
+    text-align:center;
+    color:white;
+    background:rgba(0,0,0,0.5);
+    padding:8px 16px;
+    margin:0 20px;
+    border-radius:20px;
+
+  }
+
+  .swiper-slide-caption-item.is-with-thumbs {
+    bottom: 130px;
+  }
+  
+  /* Затемнение фона */
+  [data-qu-frame][data-qu-frame-theme="gallery"]::backdrop {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Мобильная адаптация */
+  @media (max-width: 768px) {
+    [data-qu-frame-theme="gallery"] .frame-header {
+      padding: 0.75rem 1rem;
+    }
+    
+    [data-qu-frame-theme="gallery"] .frame-close-minimal {
+      top: 0.75rem !important;
+      right: 0.75rem !important;
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      font-size: 1.25rem !important;
+    }
+    
+    [data-qu-frame-theme="gallery"] .swiper-button-prev,
+    [data-qu-frame-theme="gallery"] .swiper-button-next {
+      width: 36px;
+      height: 36px;
+    }
+    
+    [data-qu-frame-theme="gallery"] .swiper-button-prev:after,
+    [data-qu-frame-theme="gallery"] .swiper-button-next:after {
+      font-size: 1rem;
+    }
+    
+    [data-qu-frame-theme="gallery"] .swiper-pagination {
+      
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+    }
+    
+    [data-qu-frame-theme="gallery"] .swiper-slide-caption {
+      bottom: 4rem;
+      padding: 1.5rem 0.5rem 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Поддержка landscape на мобильных */
+  @media (max-width: 896px) and (orientation: landscape) {
+    [data-qu-frame-theme="gallery"] .swiper-slide img {
+      max-height: 100vh;
+    }
+    
+    [data-qu-frame-theme="gallery"] .frame-header {
+      padding: 0.5rem 1rem;
+    }
+    
+    [data-qu-frame-theme="gallery"] .frame-close-minimal {
+      width: 36px !important;
+      height: 36px !important;
+      min-width: 36px !important;
+    }
+  }
+
+
+/* Основной слайдер */
+[data-qu-frame-theme="gallery"] .gallery-top {
+    height: calc(100vh - 120px) !important;
+    width: 100% !important;
+  }
+  
+  /* Превью слайдер */
+  [data-qu-frame-theme="gallery"] .gallery-thumbs {
+    height: 100px !important;
+    width: 100% !important;
+    margin: 0 auto !important; /* Центрируем */
+    padding: 10px 0 !important;
+/*     background: rgba(0, 0, 0, 0.3); */
+    backdrop-filter: blur(4px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: absolute;
+    bottom: 0;
+}
+[data-qu-frame-theme="gallery"] .gallery-thumbs.is-style-2 {
+    background: rgba(0, 0, 0, 0.9);
+    position: relative;
+    bottom: auto;
+}
+  
+  /* Контейнер превью */
+  [data-qu-frame-theme="gallery"] .gallery-thumbs .swiper-wrapper {
+
+  }
+  
+  /* Слайды превью */
+  [data-qu-frame-theme="gallery"] .gallery-thumbs .swiper-slide {
+/*     width: 25%;
+    height: 100%;
+    opacity: 0.4; */
+     width: 100px !important; 
+    height: 70px !important;
+    margin: 0 5px !important;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0; 
+  }
+
+  [data-qu-frame-theme="gallery"] .gallery-thumbs .swiper-slide:hover {
+    opacity: 0.8;
+  }
+  
+  [data-qu-frame-theme="gallery"] .gallery-thumbs .swiper-slide-thumb-active {
+    opacity: 1;
+    border-color: white;
+  }
+  
+  [data-qu-frame-theme="gallery"] .gallery-thumbs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: unset;
+
+  }
+  
+  /* Контейнер */
+  [data-qu-frame-theme="gallery"] .frame-content > div {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+
+/* animate mode :) */
+[data-qu-frame-theme="gallery"].QuGallery-animate {
+    overflow: hidden;
+  }
+  /* Анимации только когда есть класс QuGallery-animate */
+.QuGallery-animate .swiper-button-prev {
+    animation: QuGallery-slideFromLeft 0.4s ease 0.3s forwards;
+    opacity: 0;
+  }
+  
+  .QuGallery-animate .swiper-button-next {
+    animation: QuGallery-slideFromRight 0.4s ease 0.3s forwards;
+    opacity: 0;
+  }
+  
+  .QuGallery-animate .frame-close,
+  .QuGallery-animate .frame-close-minimal {
+    animation: QuGallery-slideFromRight 0.4s ease 0.4s forwards;
+    opacity: 0;
+  }
+  
+  .QuGallery-animate .swiper-pagination {
+    animation: QuGallery-slideFromTop 0.4s ease 0.5s forwards;
+    opacity: 0;
+  }
+  
+  .QuGallery-animate .gallery-thumbs {
+    animation: QuGallery-slideFromBottom 0.4s ease 0.6s forwards;
+    opacity: 0;
+  }
+  
+  .QuGallery-animate .swiper-slide-caption-item {
+    animation: QuGallery-slideFromBottom 0.4s ease 0.5s forwards;
+    opacity: 0;
+  }
+  
+  /* Анимации */
+  @keyframes QuGallery-slideFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes QuGallery-slideFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes QuGallery-slideFromTop {
+    from {
+      opacity: 0;
+      transform: translateY(-50px) translateX(-50%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) translateX(-50%);
+    }
+  }
+  
+  @keyframes QuGallery-slideFromBottom {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Ховеры работают как в оригинале - НИЧЕГО НЕ МЕНЯЕМ */
+  [data-qu-frame-theme="gallery"] .frame-close-minimal:hover {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    transform: scale(1.1) !important;
+  }
+  
+  [data-qu-frame-theme="gallery"] .frame-close:hover,
+  [data-qu-frame-theme="gallery"] .swiper-button-prev:hover,
+  [data-qu-frame-theme="gallery"] .swiper-button-next:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+  }
+  
+  /* Чтобы элементы не дергались после анимации */
+  [data-qu-frame-theme="gallery"] .swiper-button-prev,
+  [data-qu-frame-theme="gallery"] .swiper-button-next,
+  [data-qu-frame-theme="gallery"] .frame-close,
+  [data-qu-frame-theme="gallery"] .frame-close-minimal,
+  [data-qu-frame-theme="gallery"] .swiper-pagination,
+  [data-qu-frame-theme="gallery"] .gallery-thumbs,
+  [data-qu-frame-theme="gallery"] .swiper-slide-caption-item {
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
