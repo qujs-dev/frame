@@ -1,5 +1,5 @@
 ﻿/*!
- * Gallery v1.0
+ * Gallery v1.0.3
  * Ultimate gallery with templates
  * 
  * @author Serge Galich <gaserge@mail.ru>
@@ -10,15 +10,15 @@
  * @requires Qu, Frame
  */
 
-(function(global) {
+(function (window, document) {
     'use strict';
     
     const LIB_NAME = 'Gallery';
     const DATA_PREFIX = 'qu-gallery';
     const QU_PREFIX = 'qu';
     
-    if (global.Qu && global.Qu[LIB_NAME]) {
-        global.Qu.debug(`⚠️ [${LIB_NAME}] Already registered, skipping duplicate`);
+    if (window.Qu && window.Qu[LIB_NAME]) {
+        window.Qu.debug(`⚠️ [${LIB_NAME}] Already registered, skipping duplicate`);
         return;
     }
     
@@ -390,11 +390,11 @@
     };
 
     Constructor.extend = function() {
-        if (Array.isArray(global[LIB_NAME + 'Extend'])) {
-            global[LIB_NAME + 'Extend'].forEach((fn) => {
+        if (Array.isArray(window[LIB_NAME + 'Extend'])) {
+            window[LIB_NAME + 'Extend'].forEach((fn) => {
                 Constructor.use(fn);
             });
-            global[LIB_NAME + 'Extend'] = [];
+            window[LIB_NAME + 'Extend'] = [];
         }
     };
 
@@ -443,7 +443,7 @@
                 if (this._config.libCssPath) {
                     assets.push(this._config.libCssPath);
                 }
-                if (this._config.libPath && this._config.libGlobal && !global[this._config.libGlobal]) {
+                if (this._config.libPath && this._config.libGlobal && !window[this._config.libGlobal]) {
                     assets.push(this._config.libPath);
                 }
                 if (assets.length > 0) {
@@ -594,28 +594,6 @@
             const initFunctionSrc = Constructor._getData(template, 'init-function', QU_PREFIX);
             initFn = getCompiledFunction(initFunctionSrc, 'init');
 
-/*             
-            const slideFunction = Constructor._getData(template, 'slide-function', QU_PREFIX);
-            if (slideFunction) {
-                try {
-                    slideFn = new Function('item', 'return (' + slideFunction + ')(item)');
-                } catch(e) {}
-            }
-            
-            const thumbFunction = Constructor._getData(template, 'thumb-function', QU_PREFIX);
-            if (thumbFunction) {
-                try {
-                    thumbFn = new Function('item', 'return (' + thumbFunction + ')(item)');
-                } catch(e) {}
-            }
-            
-            const initFunction = Constructor._getData(template, 'init-function', QU_PREFIX);
-            if (initFunction) {
-                try {
-                    initFn = new Function('container', 'items', 'options', 'return (' + initFunction + ')(container, items, options)');
-                } catch(e) {}
-            } */
-            
             const sliderOptionsData = Constructor._getData(template, 'slider-options', QU_PREFIX);
             if (sliderOptionsData) {
                 try {
@@ -731,117 +709,24 @@
             }
         };
 
-        Constructor._Qu.Frame.open({
-            content: content.innerHTML,
-            modal: true,
-            closeButton: true,
-            onOpen: (dialog) => {
-                // Уничтожаем все Swiper при закрытии диалога (событие 'close')
-                dialog.addEventListener('close', () => {
-                    if (content._galleryDestroy) {
-                        content._galleryDestroy(dialog);
-                    }
-                    // Удаляем диалог из коллекции Frame
-                    if (Constructor._Qu.Frame && Constructor._Qu.Frame._dialogs) {
-                        Constructor._Qu.Frame._dialogs.delete(dialog);
-                    }
-                }, { once: true });
-        
-                
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-                setTimeout(() => {
-                    dialog.classList.add('QuGallery-animate');
-                    setTimeout(() => dialog.classList.remove('QuGallery-animate'), 1200);
-                    if (content._galleryInit) {
-                        const { fn, items, options } = content._galleryInit;
-                        const hasThumbs = content.querySelector('[data-thumbs]');
-                        if (hasThumbs) {
-                            fn(dialog, items, options);          // просто запускаем init‑функцию
-                        } else {
-                            const containerEl = dialog.querySelector('[data-container]')?.parentElement;
-                            if (containerEl) {
-                                fn(containerEl, items, options); // запускаем init‑функцию
-                            }
-                        }     
-
-                        if (activeDialog) {
-                            Constructor._Qu.loading(false, activeDialog);
-                        } else {
-                            Constructor._Qu.loading(false, document.body);
-                        }
-                    }
-                    // Остальная часть (скрипты, клики) без изменений
-                    const scripts = dialog.querySelectorAll('script');
-                    scripts.forEach(oldScript => {
-                        const newScript = document.createElement('script');
-                        Array.from(oldScript.attributes).forEach(attr => {
-                            newScript.setAttribute(attr.name, attr.value);
-                        });
-                        newScript.textContent = oldScript.textContent;
-                        oldScript.parentNode.replaceChild(newScript, oldScript);
-                    });
-         /*            setTimeout(() => {
-                        dialog.addEventListener('click', (e) => {
-                            let target = e.target;
-                            let shouldClose = true;
-                            while (target && target !== dialog) {
-                                if (target.hasAttribute(`data-${QU_PREFIX}-gallery-no-close`)) {
-                                    shouldClose = false;
-                                    break;
-                                }
-                                target = target.parentNode;
-                            }
-                            if (e.target === dialog) shouldClose = true;
-                            if (shouldClose) Constructor._Qu.Frame.close(dialog);
-                        });
-                    }, 100); */
-
-                    // Сохраняем обработчик, чтобы удалять при повторном открытии
-                    if (dialog._galleryClickHandler) {
-                        dialog.removeEventListener('click', dialog._galleryClickHandler);
-                    }
-                    const clickHandler = (e) => {
-                        // Проверяем, не кликнули ли по элементу с data-qu-gallery-no-close
-                        if (e.target.closest(`[data-${QU_PREFIX}-gallery-no-close]`)) return;
-                        // Закрываем диалог
-                        Constructor._Qu.Frame.close(dialog);
-                    };
-                    dialog._galleryClickHandler = clickHandler;
-                    dialog.addEventListener('click', clickHandler); 
-
-            /*         setTimeout(() => {
-                        if (dialog._galleryClickHandler) {
-                            dialog.removeEventListener('click', dialog._galleryClickHandler);
-                        }
-                        const clickHandler = (e) => {
-                            if (e.target.closest(`[data-${QU_PREFIX}-gallery-no-close]`)) return;
-                            Constructor._Qu.Frame.close(dialog);
-                        };
-                        dialog._galleryClickHandler = clickHandler;
-                        dialog.addEventListener('click', clickHandler);
-                    }, 100); */
-
-                }, 0);
-            }); });
-            },
-
-            onOpen: (dialog) => {
-                dialog.addEventListener('close', () => {
-                    if (content._galleryDestroy) {
-                        content._galleryDestroy(dialog);
-                    }
-                    if (Constructor._Qu.Frame && Constructor._Qu.Frame._dialogs) {
-                        Constructor._Qu.Frame._dialogs.delete(dialog);
-                    }
-                }, { once: true });
-            
-                // Дожидаемся полной отрисовки диалога, затем инициализируем слайдер
+        // Единый onOpen
+        frameOptions.onOpen = function(dialog) {
+            // Уничтожаем все Swiper при закрытии диалога (событие 'close')
+            dialog.addEventListener('close', function() {
+                if (content._galleryDestroy) {
+                    content._galleryDestroy(dialog);
+                }
+                // Удаляем диалог из коллекции Frame
+                if (Constructor._Qu.Frame && Constructor._Qu.Frame._dialogs) {
+                    Constructor._Qu.Frame._dialogs.delete(dialog);
+                }
+            }, { once: true });
+    
+            requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
+                    setTimeout(() => {
                         dialog.classList.add('QuGallery-animate');
                         setTimeout(() => dialog.classList.remove('QuGallery-animate'), 1200);
-            
                         if (content._galleryInit) {
                             const { fn, items, options } = content._galleryInit;
                             const hasThumbs = content.querySelector('[data-thumbs]');
@@ -853,15 +738,13 @@
                                     fn(containerEl, items, options);
                                 }
                             }
-            
                             if (activeDialog) {
                                 Constructor._Qu.loading(false, activeDialog);
                             } else {
                                 Constructor._Qu.loading(false, document.body);
                             }
                         }
-            
-                        // Скрипты и обработчик клика
+                        // Скрипты
                         const scripts = dialog.querySelectorAll('script');
                         scripts.forEach(oldScript => {
                             const newScript = document.createElement('script');
@@ -871,7 +754,8 @@
                             newScript.textContent = oldScript.textContent;
                             oldScript.parentNode.replaceChild(newScript, oldScript);
                         });
-            
+
+                        // Удаляем старый обработчик, если есть
                         if (dialog._galleryClickHandler) {
                             dialog.removeEventListener('click', dialog._galleryClickHandler);
                         }
@@ -881,9 +765,15 @@
                         };
                         dialog._galleryClickHandler = clickHandler;
                         dialog.addEventListener('click', clickHandler);
-                    });
+                    }, 0);
                 });
-            },
+            });
+        };
+
+        Constructor._Qu.Frame.open({
+            content: content.innerHTML,
+            modal: true,
+            closeButton: true,
             ...frameOptions
         });
 
@@ -965,11 +855,11 @@
         }
     };
 
-    if (global.Qu) {
-        global.Qu.lib(LIB_NAME, Constructor);
+    if (window.Qu) {
+        window.Qu.lib(LIB_NAME, Constructor);
     } else {
-        global._QuLibs = global._QuLibs || [];
-        global._QuLibs.push({ name: LIB_NAME, instance: Constructor });
+        window._QuLibs = window._QuLibs || [];
+        window._QuLibs.push({ name: LIB_NAME, instance: Constructor });
     }
     
-})(window);
+})(window, document);
