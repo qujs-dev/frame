@@ -1,5 +1,5 @@
 ﻿/*!
- * Frame v1.0.4
+ * Frame v1.0.5
  * 
  * @author Serge Galich <gaserge@mail.ru>
  * @copyright 2025

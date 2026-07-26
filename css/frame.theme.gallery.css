@@ -195,6 +195,7 @@
   }
 
   .swiper-slide-caption-item {
+    word-break: break-word;
     position:absolute;
     bottom:20px;
     left:auto;
@@ -291,7 +292,7 @@
     padding: 10px 0 !important;
 /*     background: rgba(0, 0, 0, 0.3); */
     backdrop-filter: blur(4px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     position: absolute;
     bottom: 0;
 }
@@ -328,7 +329,9 @@
   
   [data-qu-frame-theme="gallery"] .gallery-thumbs .swiper-slide-thumb-active {
     opacity: 1;
-    border-color: white;
+    border-color: rgba(0, 0, 0, 0.6);
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: -4px; 
   }
   
   [data-qu-frame-theme="gallery"] .gallery-thumbs img {

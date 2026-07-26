@@ -1,5 +1,5 @@
 ﻿/*!
- * Gallery v1.0.4
+ * Gallery v1.0.5
  * Ultimate gallery with templates
  * 
  * @author Serge Galich <gaserge@mail.ru>
@@ -59,11 +59,11 @@
                             type: 'fraction',
                         },
                         
-                        updateOnWindowResize: false,
-                        resizeObserver: false,
-                        observer: false,
-                        observeParents: false,
-                        observeSlideChildren: false,
+                        //updateOnWindowResize: false,
+                        //resizeObserver: false,
+                        //observer: false,
+                        //observeParents: false,
+                        //observeSlideChildren: false,
                     });
                 }
             }, 0);
@@ -80,7 +80,7 @@
                         <img data-${QU_PREFIX}-gallery-no-close src='\${item.src}' style='max-width:100%; max-height:100vh; object-fit:contain;' loading='lazy'>
                         <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
                     </div>
-                     \${item.caption ? \`<div class='swiper-slide-caption-item'>\${item.caption}</div>\` : ''}
+                     \${item.caption ? \`<div class='swiper-slide-caption-item' data-${QU_PREFIX}-gallery-no-close>\${item.caption}</div>\` : ''}
                     
                     </div>\`;
         }"
@@ -110,11 +110,11 @@
                     onlyInViewport: false,
                 },
 
-                updateOnWindowResize: false,
-                resizeObserver: false,
-                observer: false,
-                observeParents: false,
-                observeSlideChildren: false,
+                //updateOnWindowResize: false,
+                //resizeObserver: false,
+                //observer: false,
+                //observeParents: false,
+                //observeSlideChildren: false,
             });
             container._swiper = swiper;
         }"
@@ -170,7 +170,7 @@
                     <img class='no-lazyloaded' data-${QU_PREFIX}-gallery-no-close src='\${item.src}' style='max-width:100%; max-height:100vh; object-fit:contain;' loading='lazy'>
                     <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
                 </div>
-                \${item.caption ? \`<div class='swiper-slide-caption-item is-with-thumbs'>\${item.caption}</div>\` : ''}
+                \${item.caption ? \`<div class='swiper-slide-caption-item is-with-thumbs' data-${QU_PREFIX}-gallery-no-close>\${item.caption}</div>\` : ''}
             </div>\`;
         }"
     data-${QU_PREFIX}-thumb-function="
@@ -197,11 +197,11 @@
                 centeredSlides: true,
                 initialSlide: Math.floor(items.length / 2),
 
-                updateOnWindowResize: false,
-                resizeObserver: false,
-                observer: false,
-                observeParents: false,
-                observeSlideChildren: false,
+               // updateOnWindowResize: false,
+               // resizeObserver: false,
+                //observer: false,
+                //observeParents: false,
+                //observeSlideChildren: false,
             });
             
             const top = new Swiper(topEl, {
@@ -223,11 +223,11 @@
                 keyboard: { enabled: true },
                 thumbs: { swiper: thumbs },
 
-                updateOnWindowResize: false,
-                resizeObserver: false,
-                observer: false,
-                observeParents: false,
-                observeSlideChildren: false,
+                //updateOnWindowResize: false,
+                //resizeObserver: false,
+                //observer: false,
+                //observeParents: false,
+                //observeSlideChildren: false,
 
                 ...options
             });
@@ -274,7 +274,7 @@
             <div class="swiper-button-prev" data-${QU_PREFIX}-gallery-no-close></div>
             <div class="swiper-button-next" data-${QU_PREFIX}-gallery-no-close></div>
         </div>
-        <div class="swiper gallery-thumbs is-style-1" data-thumbs data-${QU_PREFIX}-gallery-no-close->
+        <div class="swiper gallery-thumbs is-style-1" data-thumbs data-${QU_PREFIX}-gallery-no-close>
             <div class="swiper-wrapper" ></div>
         </div>
     </div>
