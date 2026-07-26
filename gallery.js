@@ -1,5 +1,5 @@
 ﻿/*!
- * Gallery v1.0.3
+ * Gallery v1.0.4
  * Ultimate gallery with templates
  * 
  * @author Serge Galich <gaserge@mail.ru>
@@ -121,7 +121,7 @@
     
     data-${QU_PREFIX}-destroy-function="
         (dialog) => {
-            console.log('Вызвана полная очистка Swiper');
+            //console.log('Вызвана полная очистка Swiper');
             const containers = dialog.querySelectorAll('.swiper, .gallery-top, .gallery-thumbs');
             containers.forEach(el => {
                 if (el.swiper) {
@@ -237,7 +237,7 @@
     data-${QU_PREFIX}-destroy-function="
         (dialog) => {
 
-            console.log('Вызвана полная очистка Swiper');
+            //console.log('Вызвана полная очистка Swiper');
             const containers = dialog.querySelectorAll('.swiper, .gallery-top, .gallery-thumbs');
             containers.forEach(el => {
                 if (el.swiper) {
@@ -410,7 +410,6 @@
     };
 
     Constructor.init = function(quInstance, params = {}) {
-        console.log('GALLERY Constructor init')
         Qu = quInstance;
         Constructor.initOnce(params);
         Constructor.config(params);
@@ -437,7 +436,6 @@
         },
 
         init: function() {
-            console.log('GALLERY Constructor.prototype init')
             if (!this._config.lazyLoad) {
                 const assets = [];
                 if (this._config.libCssPath) {

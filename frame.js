@@ -1,5 +1,5 @@
 ﻿/*!
- * Frame v1.0.3
+ * Frame v1.0.4
  * 
  * @author Serge Galich <gaserge@mail.ru>
  * @copyright 2025
@@ -102,55 +102,12 @@
             if (Qu && Qu.debug) return Qu.debug(...args);
             console.log(...args);
         },
+        
+        trigger: (el, ev, opts) => (Qu && Qu.trigger ? Qu.trigger(el, ev, opts) : null),
 
-        trigger: function(el, ev, opts) {
-            if (Qu && Qu.trigger) return Qu.trigger(el, ev, opts);
-            const event = new CustomEvent(ev, { detail: opts?.detail });
-            return el.dispatchEvent(event);
-        },
-
-        on: function(el, ev, handler, opts) {
-            if (Qu && Qu.on) { return Qu.on(el, ev, handler, opts); }
-            
-            if (typeof ev !== 'string' && ev.addEventListener) {
-                if (typeof el === 'string') {
-                    el = el.split(' ').filter(e => e.trim());
-                }
-
-                el.forEach(el => {
-                    ev.addEventListener(el.trim(), handler, opts);
-                });
-                return;
-            }
-            
-            if (typeof ev === 'string') {
-                if (typeof el === 'string') {
-                    el = el.split(' ').filter(e => e.trim());
-                }
-                el.forEach(el => {
-                    document.addEventListener(el.trim(), function(event) {
-                        const target = event.target.closest(ev);
-                        if (target) {
-                            event._target = target;
-                            handler(event);
-                        }
-                    }, opts);
-                });
-                
-                return;
-            }
-        },
-
-        page: function() {
-            if (Qu && Qu.page) return Qu.page();
-
-            return new Promise((resolve) => {
-                if (document.readyState === 'complete') {
-                    resolve();
-                } else {
-                    window.addEventListener('load', resolve);
-                }
-            });
+        on: (...args) => {
+            if (Qu && Qu.on) return Qu.on(...args);
+            return null;
         },
     };
 
