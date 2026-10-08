@@ -1,4 +1,4 @@
-﻿/* Frame Core CSS - Minimal Base */
+/* Frame Core CSS - Minimal Base */
 :root {
   /* Colors */
   --frame-primary: #3b82f6;
@@ -38,7 +38,9 @@
   /* Transitions */
   --frame-transition: all 1.5s ease;
 
-  --frame-padding-inset: 0;
+  --frame-padding-inset: 30px 10px;
+
+  --frame-width: 500px;
 }
 
 html {
@@ -93,7 +95,7 @@ html:has(dialog[data-qu-frame][open]) {
   border-radius: var(--frame-border-radius);
   padding: 0;
   box-shadow: var(--frame-shadow);
-  max-width: 500px;
+  max-width: var(--frame-width);
   box-sizing: border-box;
 
   width: 100%;

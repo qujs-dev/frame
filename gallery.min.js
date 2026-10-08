@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * Gallery v1.0.5
  * Ultimate gallery with templates
  * 

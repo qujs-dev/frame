@@ -1,4 +1,4 @@
-﻿/* Gallery Theme - Fullscreen transparent */
+/* Gallery Theme - Fullscreen transparent */
 [data-qu-frame-theme="gallery"] {
     --frame-bg: transparent;
     --frame-backdrop: rgba(0, 0, 0, 0.9);
@@ -7,6 +7,7 @@
     --frame-text: white;
     --frame-shadow: none;
     --frame-border-radius: 0;
+    --frame-padding-inset: 0;
   }
 
   [data-qu-gallery] {
