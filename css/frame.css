@@ -53,9 +53,10 @@ dialog {
   */
 }
 
-html:has(dialog[data-qu-frame][open]) {
+html:has(dialog[data-qu-frame][open]) body {
   overflow: hidden;
 }
+
 
 
 /* Core Structure */
@@ -179,6 +180,8 @@ html:has(dialog[data-qu-frame][open]) {
 }
 
 .frame-close {
+  all: unset;
+  box-sizing: border-box;
   background: none;
   border: none;
   font-size: 1.25rem;
@@ -206,6 +209,8 @@ html:has(dialog[data-qu-frame][open]) {
 
 /* Кнопка закрытия без header */
 .frame-close-minimal {
+  all: unset;
+  box-sizing: border-box;
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
@@ -331,6 +336,8 @@ html:has(dialog[data-qu-frame][open]) {
 }
 
 .frame-btn {
+  all: unset;
+  box-sizing: border-box;
   padding: 0.5rem 1rem;
   border: var(--frame-border-width) solid #d1d5db;
   border-radius: var(--frame-border-radius-sm);
