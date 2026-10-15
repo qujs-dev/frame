@@ -1,5 +1,5 @@
 /*!
- * Frame v1.0.7
+ * Frame v1.0.8
  * 
  * @author Serge Galich <gaserge@mail.ru>
  * @copyright 2025
@@ -388,7 +388,7 @@
             }, { capture: true });
             // -----------------------------------------------------------
         
-            Constructor._Qu.on('close', dialog, () => {
+   /*          Constructor._Qu.on('close', dialog, () => {
                 const cfg = dialog._config;
                 if (cfg && cfg.onClose) {
                     cfg.onClose();
@@ -408,6 +408,27 @@
                             dialog.parentNode.removeChild(dialog);
                         }
                     }, 50);
+                }
+            }); */
+
+            Constructor._Qu.on('close', dialog, () => {
+                const cfg = dialog._config;
+                if (cfg && cfg.onClose) {
+                    cfg.onClose();
+                }
+                Constructor._removeData(dialog, 'opening', QU_PREFIX);
+                Constructor._removeData(dialog, 'closing', QU_PREFIX);
+                this._clearCustomDuration(dialog);
+            
+                this._dialogs.delete(dialog);
+            
+                if (dialog._frameCreated) {
+                    if (window.Qu && typeof window.Qu.off === 'function') {
+                        window.Qu.off(null, dialog);
+                    }
+                    if (dialog.parentNode) {
+                        dialog.parentNode.removeChild(dialog);
+                    }
                 }
             });
         
@@ -650,7 +671,7 @@
                 animationDuration = config.animationDurationClose;
             }
             
-            setTimeout(() => {
+/*             setTimeout(() => {
                 dialogToClose.close(returnValue);
                 
                 this._dialogs.delete(dialogToClose);
@@ -662,6 +683,11 @@
                         }
                     }, 50);
                 }
+            }, animationDuration); */
+
+            setTimeout(() => {
+                dialogToClose.close(returnValue);
+                this._dialogs.delete(dialogToClose);
             }, animationDuration);
             
             return this;

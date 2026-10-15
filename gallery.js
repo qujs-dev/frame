@@ -1,5 +1,5 @@
 /*!
- * Gallery v1.0.7
+ * Gallery v1.0.8
  * Ultimate gallery with templates
  * 
  * @author Serge Galich <gaserge@mail.ru>
@@ -723,8 +723,8 @@
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     setTimeout(() => {
-                        dialog.classList.add('QuGallery-animate');
-                        setTimeout(() => dialog.classList.remove('QuGallery-animate'), 1200);
+                        //dialog.classList.add('QuGallery-animate');
+                        //setTimeout(() => dialog.classList.remove('QuGallery-animate'), 1200);
                         if (content._galleryInit) {
                             const { fn, items, options } = content._galleryInit;
                             const hasThumbs = content.querySelector('[data-thumbs]');
