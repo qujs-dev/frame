@@ -1,5 +1,5 @@
 /*!
- * Gallery v1.0.5
+ * Gallery v1.0.7
  * Ultimate gallery with templates
  * 
  * @author Serge Galich <gaserge@mail.ru>

@@ -1,5 +1,5 @@
 /*!
- * Frame v1.0.5
+ * Frame v1.0.7
  * 
  * @author Serge Galich <gaserge@mail.ru>
  * @copyright 2025
@@ -169,12 +169,12 @@
             html += `
                 <div class="${prefix}-header">
                     ${config.title ? `<div class="${prefix}-title">${config.title}</div>` : '<div></div>'}
-                    ${config.closeButton ? `<button type="button" class="${prefix}-close" aria-label="${config.lexicon?.close || DEFAULT_CONFIG.lexicon.close}">&times;</button>` : ''}
+                    ${config.closeButton ? `<button type="button" class="${prefix}-close" aria-label="${config.lexicon?.close || DEFAULT_CONFIG.lexicon.close}"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg></button>` : ''}
                 </div>
             `;
         } else if (config.closeButton && !config.header) {
             html += `
-                <button type="button" class="${prefix}-close ${prefix}-close-minimal" aria-label="${config.lexicon?.close || DEFAULT_CONFIG.lexicon.close}">&times;</button>
+                <button type="button" class="${prefix}-close ${prefix}-close-minimal" aria-label="${config.lexicon?.close || DEFAULT_CONFIG.lexicon.close}"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg></button>
             `;
         }
 
@@ -345,59 +345,82 @@
             const config = Object.assign({}, this._config, dialog._config || {});
             const prefix = config.cssPrefix || 'frame';
             let _this = this;
-            
+        
             const closeBtns = dialog.querySelectorAll(`.${prefix}-close, .${prefix}-close-minimal`);
-            
+        
             closeBtns.forEach(closeBtn => {
                 Constructor._Qu.on('click', closeBtn, (e) => {
                     e.stopPropagation();
                     this.close(dialog, 'cancel');
                 });
             });
-
+        
             let backdropClickStartTarget = null;
-
+        
             Constructor._Qu.on('mousedown', dialog, (e) => {
                 backdropClickStartTarget = e.target;
             });
-
+        
             Constructor._Qu.on('click', dialog, (e) => {
                 if (config.backdropClose && e.target === dialog) {
                     if (backdropClickStartTarget !== dialog) return;
-                    
+        
                     setTimeout(() => {
                         if (!window.getSelection().toString().trim()) {
                             this.close(dialog, 'cancel');
                         }
                     }, 10);
                 }
-                
+        
                 backdropClickStartTarget = null;
             });
-
+        
+            // --- Глушим "просачивающийся" cancel от нативных пикеров ---
+            // cancel с target === dialog — это настоящий Esc, даём ему пройти дальше.
+            // cancel с target === вложенный <dialog> — чужая жизнь, не трогаем.
+            // Всё остальное (инпуты-пикеры) — "протёкший" Esc, глотаем.
+            Constructor._Qu.on('cancel', dialog, (e) => {
+                const t = e.target;
+                if (t && t !== dialog && t.tagName !== 'DIALOG') {
+                    dialog._skipNextCancel = true;
+                    setTimeout(() => { dialog._skipNextCancel = false; }, 150);
+                }
+            }, { capture: true });
+            // -----------------------------------------------------------
+        
             Constructor._Qu.on('close', dialog, () => {
-                const config = dialog._config;
-                if (config && config.onClose) {
-                    config.onClose();
+                const cfg = dialog._config;
+                if (cfg && cfg.onClose) {
+                    cfg.onClose();
                 }
                 Constructor._removeData(dialog, 'opening', QU_PREFIX);
                 Constructor._removeData(dialog, 'closing', QU_PREFIX);
                 this._clearCustomDuration(dialog);
-                
+        
                 this._dialogs.delete(dialog);
-                
+        
                 if (dialog._frameCreated) {
                     setTimeout(() => {
+                        if (window.Qu && typeof window.Qu.off === 'function') {
+                            window.Qu.off(null, dialog);
+                        }
                         if (dialog.parentNode) {
                             dialog.parentNode.removeChild(dialog);
                         }
                     }, 50);
                 }
             });
-            
+        
             if (config.escClose !== false) {
                 Constructor._Qu.on('cancel', dialog, (e) => {
                     e.preventDefault();
+        
+                    // Пропускаем cancel, "протёкший" из нативного пикера
+                    if (dialog._skipNextCancel) {
+                        dialog._skipNextCancel = false;
+                        return;
+                    }
+        
                     this.close(dialog, 'cancel');
                 });
             }
@@ -718,23 +741,23 @@
                 ...options
             });
         },
-
+        
         confirm: function(content, title, onConfirm, onCancel, options = {}) {
             let _this = this;
             const finalTitle = this._getLocalizedTitle(title, 'confirm', options);
             const config = { ...this._config, ...options };
             const prefix = config.cssPrefix || 'frame';
-            
+        
             const buttons = `
                 <button type="button" class="${prefix}-btn ${prefix}-cancel">${config.lexicon.cancel}</button>
                 <button type="button" class="${prefix}-btn ${prefix}-confirm">${config.lexicon.confirm}</button>
             `;
-            
+        
             const form = `
                 <div class="${prefix}-content">${content}</div>
                 <div class="${prefix}-footer">${buttons}</div>
             `;
-            
+        
             return this._createNew({
                 title: finalTitle,
                 content: form,
@@ -742,11 +765,11 @@
                 ...options,
                 onOpen: function(dialog) {
                     let handled = false;
-                    
+        
                     const cancelBtn = dialog.querySelector(`.${prefix}-cancel`);
                     const confirmBtn = dialog.querySelector(`.${prefix}-confirm`);
                     const closeBtn = dialog.querySelector(`.${prefix}-close`);
-                    
+        
                     const handleCancel = function() {
                         if (!handled) {
                             handled = true;
@@ -754,7 +777,7 @@
                             _this.close(dialog, 'cancel');
                         }
                     };
-                    
+        
                     const handleConfirm = function() {
                         if (!handled) {
                             handled = true;
@@ -762,19 +785,29 @@
                             _this.close(dialog, 'default');
                         }
                     };
-
+        
                     if (cancelBtn) {
                         Constructor._Qu.on('click', cancelBtn, handleCancel);
                     }
-                    
+        
                     if (confirmBtn) {
                         Constructor._Qu.on('click', confirmBtn, handleConfirm);
                     }
-                    
+        
                     if (closeBtn) {
                         Constructor._Qu.on('click', closeBtn, handleCancel);
                     }
-                    
+        
+                    // --- Глушим "просачивающийся" cancel от нативных пикеров ---
+                    Constructor._Qu.on('cancel', dialog, (e) => {
+                        const t = e.target;
+                        if (t && t !== dialog && t.tagName !== 'DIALOG') {
+                            dialog._skipNextCancel = true;
+                            setTimeout(() => { dialog._skipNextCancel = false; }, 150);
+                        }
+                    }, { capture: true });
+                    // -----------------------------------------------------------
+        
                     if (config.backdropClose !== false) {
                         Constructor._Qu.on('click', dialog, function(e) {
                             if (e.target === dialog) {
@@ -782,14 +815,20 @@
                             }
                         });
                     }
-                    
+        
                     if (config.escClose !== false) {
                         Constructor._Qu.on('cancel', dialog, function(e) {
                             e.preventDefault();
+    
+                            if (dialog._skipNextCancel) {
+                                dialog._skipNextCancel = false;
+                                return;
+                            }
+        
                             handleCancel();
                         });
                     }
-                    
+        
                     if (options.onOpen) {
                         options.onOpen(dialog);
                     }

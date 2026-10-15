@@ -1,146 +1,158 @@
-/* Light Theme */
-[data-qu-frame-theme="light"] {
-  --frame-primary: #3b82f6;
-  --frame-success: #10b981;
-  --frame-error: #ef4444;
-  --frame-warning: #f59e0b;
-  --frame-info: #06b6d4;
+/* ============================================================
+   Light Theme
+   ============================================================ */
+   [data-qu-frame-theme="light"] {
+    --qu-frame-primary-custom:   #3b82f6;
+    --qu-frame-text-custom:      #374151;
+    --qu-frame-bg-custom:        #ffffff;
+    --qu-frame-border-custom:    #f3f4f6;
+    --qu-frame-header-bg-custom: #fafafa;
+    --qu-frame-backdrop-custom:  rgba(107, 114, 128, 0.18);
+    --qu-frame-shadow-custom:    0 4px 12px rgba(0, 0, 0, 0.05);
+    --qu-frame-radius-custom:    16px;
+    --qu-frame-radius-sm-custom: 12px;
   
-  --frame-text: #374151;
-  --frame-bg: #ffffff;
-  --frame-border: #f3f4f6;
-  --frame-header-bg: #fafafa;
-  --frame-backdrop: rgba(107, 114, 128, 0.18);
-  --frame-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  --frame-border-radius: 16px;
-}
-
-[data-qu-frame-theme="light"].frame-dialog::backdrop {
-  backdrop-filter: blur(3px);
-}
-
-[data-qu-frame-theme="light"] .frame-modal {
-  background: var(--frame-bg);
-  border: 1px solid var(--frame-border);
-  box-shadow: var(--frame-shadow);
-}
-
-[data-qu-frame-theme="light"] .frame-header {
-  background: var(--frame-header-bg);
-  border-bottom: 1px solid #f5f5f5;
-  padding: 1.5rem 1.5rem 1.25rem;
-  border-radius: 16px 16px 0 0;
-  position: relative;
-}
-
-[data-qu-frame-theme="light"] .frame-title {
-  color: #1f2937;
-  font-weight: 600;
-  font-size: 1.125rem;
-  margin: 0;
-}
-
-[data-qu-frame-theme="light"] .frame-close {
-  color: #9ca3af;
-  background: #ffffff; 
-  border: 1px solid #f3f4f6;
-  border-radius: 12px;
-  min-width: 36px;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  transition: all 0.15s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-}
-
-[data-qu-frame-theme="light"] .frame-close:hover {
-  color: #6b7280;
-  background: #f9fafb;
-  border-color: #e5e7eb;
-  transform: scale(1.05);
-}
-
-[data-qu-frame-theme="light"] .frame-content {
-  color: var(--frame-text);
-  line-height: 1.6;
-  padding: 1.5rem;
-  background: #ffffff;
-}
-
-[data-qu-frame-theme="light"] .frame-footer {
-  background: #fff;
-  border-top: 1px solid #fff;
-  padding: 1.25rem 1.5rem;
-  border-radius: 0 0 16px 16px;
-}
-
-[data-qu-frame-theme="light"] .frame-btn {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  color: #4b5563;
-  border-radius: 12px;
-  font-weight: 500;
-  padding: 0.75rem 1.5rem;
-  transition: all 0.15s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-}
-
-[data-qu-frame-theme="light"] .frame-btn:hover {
-  background: #f9fafb;
-  border-color: #d1d5db;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-[data-qu-frame-theme="light"] .frame-confirm {
-  background: var(--frame-primary);
-  border-color: var(--frame-primary);
-  color: white;
-}
-
-[data-qu-frame-theme="light"] .frame-confirm:hover {
-  background: #2563eb;
-  border-color: #2563eb;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(139, 92, 246, 0.2);
-}
-
-[data-qu-frame-theme="light"] .frame-cancel {
-  background: #ffffff;
-  border-color: #e5e7eb;
-  color: #6b7280;
-}
-
-[data-qu-frame-theme="light"] .frame-cancel:hover {
-  background: #f9fafb;
-  color: #4b5563;
-  border-color: #d1d5db;
-}
-
-/* Light Types - цветные левые бордеры с закруглениями */
-[data-qu-frame-theme="light"].frame-success .frame-modal {
-  border-left: 4px solid var(--frame-success);
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
-}
-
-[data-qu-frame-theme="light"].frame-error .frame-modal {
-  border-left: 4px solid var(--frame-error);
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
-}
-
-[data-qu-frame-theme="light"].frame-warning .frame-modal {
-  border-left: 4px solid var(--frame-warning);
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
-}
-
-[data-qu-frame-theme="light"].frame-info .frame-modal {
-  border-left: 4px solid var(--frame-info);
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
-}
+    --qu-frame-close-color-custom:        #9ca3af;
+    --qu-frame-close-color-hover-custom:  #6b7280;
+    --qu-frame-close-bg-custom:           #ffffff;
+    --qu-frame-close-bg-hover-custom:     #f9fafb;
+    --qu-frame-close-border-custom:       1px solid #f3f4f6;
+    --qu-frame-close-radius-custom:       12px;
+    --qu-frame-close-size-custom:         36px;
+    --qu-frame-close-font-size-custom:    1.25rem;
+  
+    --qu-frame-close-minimal-bg-custom:       #ffffff;
+    --qu-frame-close-minimal-bg-hover-custom: #f9fafb;
+  
+    --qu-frame-btn-bg-custom:       #ffffff;
+    --qu-frame-btn-bg-hover-custom: #f9fafb;
+    --qu-frame-btn-border-custom:   1px solid #e5e7eb;
+    --qu-frame-btn-color-custom:    #4b5563;
+  }
+  
+  /* ---------- Backdrop с blur ---------- */
+  [data-qu-frame-theme="light"].frame-dialog::backdrop {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+  
+  /* ---------- Модалка ---------- */
+  [data-qu-frame-theme="light"] .frame-modal {
+    background: var(--qu-frame-bg);
+    border: 1px solid var(--qu-frame-border);
+    box-shadow: var(--qu-frame-shadow);
+  }
+  
+  /* ---------- Header ---------- */
+  [data-qu-frame-theme="light"] .frame-header {
+    background: var(--qu-frame-header-bg);
+    border-bottom: 1px solid #f5f5f5;
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-radius: 16px 16px 0 0;
+    position: relative;
+  }
+  [data-qu-frame-theme="light"] .frame-title {
+    color: #1f2937;
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin: 0;
+  }
+  
+  /* ---------- Кнопка закрытия (в header) ---------- */
+  [data-qu-frame-theme="light"] .frame-close {
+    color: var(--qu-frame-close-color);
+    background: var(--qu-frame-close-bg);
+    border: var(--qu-frame-close-border);
+    border-radius: var(--qu-frame-close-radius);
+    min-width: var(--qu-frame-close-size);
+    width: var(--qu-frame-close-size);
+    height: var(--qu-frame-close-size);
+    font-size: var(--qu-frame-close-font-size);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: var(--qu-transition);
+  }
+  [data-qu-frame-theme="light"] .frame-close:hover {
+    color: var(--qu-frame-close-color-hover);
+    background: var(--qu-frame-close-bg-hover);
+    border-color: #e5e7eb;
+    transform: scale(1.05);
+  }
+  
+  /* ---------- Content ---------- */
+  [data-qu-frame-theme="light"] .frame-content {
+    color: var(--qu-frame-text);
+    line-height: 1.6;
+    padding: 1.5rem;
+    background: #ffffff;
+  }
+  
+  /* ---------- Footer ---------- */
+  [data-qu-frame-theme="light"] .frame-footer {
+    background: #ffffff;
+    border-top: 1px solid #ffffff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 0 16px 16px;
+  }
+  
+  /* ---------- Кнопки ---------- */
+  [data-qu-frame-theme="light"] .frame-btn {
+    background: var(--qu-frame-btn-bg);
+    border: var(--qu-frame-btn-border);
+    color: var(--qu-frame-btn-color);
+    border-radius: 12px;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: var(--qu-transition);
+  }
+  [data-qu-frame-theme="light"] .frame-btn:hover {
+    background: var(--qu-frame-btn-bg-hover);
+    border-color: #d1d5db;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  [data-qu-frame-theme="light"] .frame-confirm {
+    background: var(--qu-frame-primary);
+    border-color: var(--qu-frame-primary);
+    color: #ffffff;
+  }
+  [data-qu-frame-theme="light"] .frame-confirm:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(139, 92, 246, 0.2);
+  }
+  
+  [data-qu-frame-theme="light"] .frame-cancel {
+    background: #ffffff;
+    border-color: #e5e7eb;
+    color: #6b7280;
+  }
+  [data-qu-frame-theme="light"] .frame-cancel:hover {
+    background: #f9fafb;
+    color: #4b5563;
+    border-color: #d1d5db;
+  }
+  
+  /* ---------- Типы — цветные левые бордеры ---------- */
+  [data-qu-frame-theme="light"].frame-success .frame-modal {
+    border-left: 4px solid var(--qu-color-success);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+  [data-qu-frame-theme="light"].frame-error .frame-modal {
+    border-left: 4px solid var(--qu-color-error);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+  [data-qu-frame-theme="light"].frame-warning .frame-modal {
+    border-left: 4px solid var(--qu-color-warning);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+  [data-qu-frame-theme="light"].frame-info .frame-modal {
+    border-left: 4px solid var(--qu-color-info);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }

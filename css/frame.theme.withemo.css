@@ -1,194 +1,189 @@
-/* Withemo Theme */
-[data-qu-frame-theme="withemo"] {
-  --frame-primary: #7c3aed;
-  --frame-success: #059669;
-  --frame-error: #dc2626;
-  --frame-warning: #d97706;
-  --frame-info: #0891b2;
+/* ============================================================
+   Withemo Theme
+   ============================================================ */
+   [data-qu-frame-theme="withemo"] {
+    --qu-frame-primary-custom:   #7c3aed;
+    --qu-frame-text-custom:      #374151;
+    --qu-frame-bg-custom:        #ffffff;
+    --qu-frame-border-custom:    #f1f5f9;
+    --qu-frame-header-bg-custom: #ffffff;
+    --qu-frame-backdrop-custom:  rgba(107, 114, 128, 0.1);
+    --qu-frame-shadow-custom:    0 8px 25px -5px rgba(0, 0, 0, 0.08);
+    --qu-frame-radius-custom:    12px;
+    --qu-frame-radius-sm-custom: 8px;
   
-  --frame-text: #374151;
-  --frame-bg: #ffffff;
-  --frame-border: #f1f5f9;
-  --frame-header-bg: #ffffff;
-  --frame-backdrop: rgba(107, 114, 128, 0.1);
-  --frame-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.08);
-  --frame-border-radius: 12px;
-}
-
-[data-qu-frame-theme="withemo"] .frame-modal {
-  background: var(--frame-bg);
-  border: 1px solid var(--frame-border);
-  box-shadow: var(--frame-shadow);
-}
-
-[data-qu-frame-theme="withemo"] .frame-header {
-  background: var(--frame-header-bg);
-  border-bottom: 1px solid #f8fafc;
-  padding: 1.5rem 1.5rem 1.25rem;
-  position: relative;
-}
-
-[data-qu-frame-theme="withemo"] .frame-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 1.5rem;
-  right: 1.5rem;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    #e2e8f0 20%, 
-    #e2e8f0 80%, 
-    transparent 100%
-  );
-}
-
-[data-qu-frame-theme="withemo"] .frame-title {
-  color: #1e293b;
-  font-weight: 600;
-  font-size: 1.125rem;
-  margin: 0;
-}
-
-[data-qu-frame-theme="withemo"] .frame-close {
-  color: #64748b;
-  background: #f8fafc;
-  border: 1px solid #f1f5f9;
-  border-radius: 8px;
-  min-width: 32px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.125rem;
-  transition: all 0.15s ease;
-}
-
-[data-qu-frame-theme="withemo"] .frame-close:hover {
-  color: #475569;
-  background: #f1f5f9;
-  border-color: #e2e8f0;
-}
-
-[data-qu-frame-theme="withemo"] .frame-content {
-  color: var(--frame-text);
-  line-height: 1.6;
-  padding: 1.5rem;
-  background: #ffffff;
-}
-
-[data-qu-frame-theme="withemo"] .frame-footer {
-  background: #fafbfc;
-  border-top: 1px solid #f8fafc;
-  padding: 1.25rem 1.5rem;
-  border-radius: 0 0 12px 12px;
-}
-
-[data-qu-frame-theme="withemo"] .frame-btn {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  color: #475569;
-  border-radius: 8px;
-  font-weight: 500;
-  padding: 0.625rem 1.25rem;
-  transition: all 0.15s ease;
-}
-
-[data-qu-frame-theme="withemo"] .frame-btn:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
-  transform: translateY(-1px);
-}
-
-[data-qu-frame-theme="withemo"] .frame-confirm {
-  background: var(--frame-primary);
-  border-color: var(--frame-primary);
-  color: white;
-}
-
-[data-qu-frame-theme="withemo"] .frame-confirm:hover {
-  background: #6d28d9;
-  border-color: #6d28d9;
-  transform: translateY(-1px);
-}
-
-[data-qu-frame-theme="withemo"] .frame-cancel {
-  background: #ffffff;
-  border-color: #e2e8f0;
-  color: #64748b;
-}
-
-[data-qu-frame-theme="withemo"] .frame-cancel:hover {
-  background: #f8fafc;
-  color: #475569;
-  border-color: #cbd5e1;
-}
-
-/* Withemo Types - цветные иконки в заголовке */
-[data-qu-frame-theme="withemo"].frame-success .frame-header::before {
-  content: '✓';
-  color: var(--frame-success);
-  font-weight: 600;
-  margin-right: 0.5rem;
-}
-
-[data-qu-frame-theme="withemo"].frame-error .frame-header::before {
-  content: '!';
-  color: var(--frame-error);
-  font-weight: 600;
-  margin-right: 0.5rem;
-}
-
-[data-qu-frame-theme="withemo"].frame-warning .frame-header::before {
-  content: '⚠';
-  color: var(--frame-warning);
-  font-weight: 600;
-  margin-right: 0.5rem;
-}
-
-[data-qu-frame-theme="withemo"].frame-info .frame-header::before {
-  content: 'i';
-  color: var(--frame-info);
-  font-weight: 600;
-  margin-right: 0.5rem;
-}
-
-/* Withemo Theme - Кнопка закрытия без header */
-[data-qu-frame-theme="withemo"] .frame-close-minimal {
-  position: absolute !important;
-  top: 1rem !important;
-  right: 1rem !important;
-  left: auto !important;
-  color: #64748b;
-  background: #f8fafc;
-  border: 1px solid #f1f5f9;
-  border-radius: 8px;
-  min-width: 32px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.125rem;
-  transition: all 0.15s ease;
-  z-index: 10;
-}
-
-[data-qu-frame-theme="withemo"] .frame-close-minimal:hover {
-  color: #475569;
-  background: #f1f5f9;
-  border-color: #e2e8f0;
-}
-
-/* Responsive для мобильных */
-@media (max-width: 576px) {
-  [data-qu-frame-theme="withemo"] .frame-close-minimal {
-    top: 0.75rem !important;
-    right: 0.75rem !important;
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
-    font-size: 1rem;
+    --qu-frame-close-color-custom:        #64748b;
+    --qu-frame-close-color-hover-custom:  #475569;
+    --qu-frame-close-bg-custom:           #f8fafc;
+    --qu-frame-close-bg-hover-custom:     #f1f5f9;
+    --qu-frame-close-border-custom:       1px solid #f1f5f9;
+    --qu-frame-close-radius-custom:       8px;
+    --qu-frame-close-size-custom:         32px;
+    --qu-frame-close-font-size-custom:    1.125rem;
+  
+    --qu-frame-close-minimal-bg-custom:       #f8fafc;
+    --qu-frame-close-minimal-bg-hover-custom: #f1f5f9;
+  
+    --qu-frame-btn-bg-custom:       #ffffff;
+    --qu-frame-btn-bg-hover-custom: #f8fafc;
+    --qu-frame-btn-border-custom:   1px solid #e2e8f0;
+    --qu-frame-btn-color-custom:    #475569;
   }
-}
+  
+  /* ---------- Модалка ---------- */
+  [data-qu-frame-theme="withemo"] .frame-modal {
+    background: var(--qu-frame-bg);
+    border: 1px solid var(--qu-frame-border);
+    box-shadow: var(--qu-frame-shadow);
+  }
+  
+  /* ---------- Header ---------- */
+  [data-qu-frame-theme="withemo"] .frame-header {
+    background: var(--qu-frame-header-bg);
+    border-bottom: 1px solid #f8fafc;
+    padding: 1.5rem 1.5rem 1.25rem;
+    position: relative;
+  }
+  [data-qu-frame-theme="withemo"] .frame-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #e2e8f0 20%, #e2e8f0 80%, transparent 100%);
+  }
+  [data-qu-frame-theme="withemo"] .frame-title {
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin: 0;
+  }
+  
+  /* ---------- Кнопка закрытия (в header) ---------- */
+  [data-qu-frame-theme="withemo"] .frame-close {
+    color: var(--qu-frame-close-color);
+    background: var(--qu-frame-close-bg);
+    border: var(--qu-frame-close-border);
+    border-radius: var(--qu-frame-close-radius);
+    min-width: var(--qu-frame-close-size);
+    width: var(--qu-frame-close-size);
+    height: var(--qu-frame-close-size);
+    font-size: var(--qu-frame-close-font-size);
+    transition: var(--qu-transition);
+  }
+  [data-qu-frame-theme="withemo"] .frame-close:hover {
+    color: var(--qu-frame-close-color-hover);
+    background: var(--qu-frame-close-bg-hover);
+    border-color: #e2e8f0;
+  }
+  
+  /* ---------- Content ---------- */
+  [data-qu-frame-theme="withemo"] .frame-content {
+    color: var(--qu-frame-text);
+    line-height: 1.6;
+    padding: 1.5rem;
+    background: #ffffff;
+  }
+  
+  /* ---------- Footer ---------- */
+  [data-qu-frame-theme="withemo"] .frame-footer {
+    background: #fafbfc;
+    border-top: 1px solid #f8fafc;
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 0 12px 12px;
+  }
+  
+  /* ---------- Кнопки ---------- */
+  [data-qu-frame-theme="withemo"] .frame-btn {
+    background: var(--qu-frame-btn-bg);
+    border: var(--qu-frame-btn-border);
+    color: var(--qu-frame-btn-color);
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 0.625rem 1.25rem;
+    transition: var(--qu-transition);
+  }
+  [data-qu-frame-theme="withemo"] .frame-btn:hover {
+    background: var(--qu-frame-btn-bg-hover);
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+  }
+  
+  [data-qu-frame-theme="withemo"] .frame-confirm {
+    background: var(--qu-frame-primary);
+    border-color: var(--qu-frame-primary);
+    color: #ffffff;
+  }
+  [data-qu-frame-theme="withemo"] .frame-confirm:hover {
+    background: #6d28d9;
+    border-color: #6d28d9;
+    transform: translateY(-1px);
+  }
+  
+  [data-qu-frame-theme="withemo"] .frame-cancel {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    color: #64748b;
+  }
+  [data-qu-frame-theme="withemo"] .frame-cancel:hover {
+    background: #f8fafc;
+    color: #475569;
+    border-color: #cbd5e1;
+  }
+  
+  /* ---------- Типы — цветные иконки в заголовке ---------- */
+  [data-qu-frame-theme="withemo"].frame-success .frame-header::before {
+    content: '✓';
+    color: var(--qu-color-success);
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+  [data-qu-frame-theme="withemo"].frame-error .frame-header::before {
+    content: '!';
+    color: var(--qu-color-error);
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+  [data-qu-frame-theme="withemo"].frame-warning .frame-header::before {
+    content: '⚠';
+    color: var(--qu-color-warning);
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+  [data-qu-frame-theme="withemo"].frame-info .frame-header::before {
+    content: 'i';
+    color: var(--qu-color-info);
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+  
+  /* ---------- Кнопка закрытия (без header) ---------- */
+  [data-qu-frame-theme="withemo"] .frame-close-minimal {
+    color: var(--qu-frame-close-color);
+    background: var(--qu-frame-close-minimal-bg);
+    border: var(--qu-frame-close-border);
+    border-radius: var(--qu-frame-close-radius);
+    min-width: var(--qu-frame-close-size);
+    width: var(--qu-frame-close-size);
+    height: var(--qu-frame-close-size);
+    font-size: var(--qu-frame-close-font-size);
+    transition: var(--qu-transition);
+  }
+  [data-qu-frame-theme="withemo"] .frame-close-minimal:hover {
+    color: var(--qu-frame-close-color-hover);
+    background: var(--qu-frame-close-minimal-bg-hover);
+    border-color: #e2e8f0;
+  }
+  
+  /* ---------- Responsive ---------- */
+  @media (max-width: 576px) {
+    [data-qu-frame-theme="withemo"] .frame-close-minimal {
+      top: 0.75rem !important;
+      right: 0.75rem !important;
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      font-size: 1rem;
+    }
+  }
